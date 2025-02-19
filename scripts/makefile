@@ -10,11 +10,11 @@ update: env
 	. env/bin/activate; pip install -r $(PROJECT_ROOT)/requirements.txt
 
 lint: env
-	. env/bin/activate; cd $(PROJECT_ROOT) && pylint bin/normalize_csv.py
+	. env/bin/activate; normalize_csv.py
 
 test: env
-	. env/bin/activate; cd $(PROJECT_ROOT) && pylint bin/normalize_csv.py
-	. env/bin/activate; cd $(PROJECT_ROOT) && pytest tests/test_lab4.py
+	. env/bin/activate; normalize_csv.py
+	. env/bin/activate; tests/test_lab4.py
 
 ygainers.html:
 	sudo google-chrome-stable --headless --disable-gpu --dump-dom --no-sandbox --timeout=5000 'https://finance.yahoo.com/markets/stocks/gainers/?start=0&count=200' > ygainers.html
