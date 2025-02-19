@@ -1,3 +1,5 @@
+PROJECT_ROOT := $(shell cd .. && pwd)
+
 default:
 	@cat makefile
 
@@ -5,14 +7,14 @@ env:
 	python3 -m venv env; . env/bin/activate; pip install --upgrade pip
 
 update: env
-	. env/bin/activate; pip install -r requirements.txt
+	. env/bin/activate; pip install -r $(PROJECT_ROOT)/requirements.txt
 
 lint: env
-	. env/bin/activate; pylint $(PWD)/.ssh/SP25_DS5111_dkr5ud/bin/normalize_csv.py
+	. env/bin/activate; cd $(PROJECT_ROOT) && pylint bin/normalize_csv.py
 
 test: env
-	. env/bin/activate; . env/bin/activate; pylint $(PWD)/.ssh/SP25_DS5111_dkr5ud/bin/normalize_csv.py
-	. env/bin/activate; . env/bin/activate; pytest $(PWD)/.ssh/SP25_DS5111_dkr5ud/tests/test_lab4.py
+	. env/bin/activate; cd $(PROJECT_ROOT) && pylint bin/normalize_csv.py
+	. env/bin/activate; cd $(PROJECT_ROOT) && pytest tests/test_lab4.py
 
 ygainers.html:
 	sudo google-chrome-stable --headless --disable-gpu --dump-dom --no-sandbox --timeout=5000 'https://finance.yahoo.com/markets/stocks/gainers/?start=0&count=200' > ygainers.html
@@ -25,5 +27,3 @@ wjsgainers.html:
 
 wjsgainers.csv: wjsgainers.html
 	python -c "import pandas as pd; raw = pd.read_html('wjsgainers.html'); raw[0].to_csv('wjsgainers.csv')"
-
-
