@@ -1,3 +1,4 @@
+![example workflow](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)
 # SP25_DS5111_dkr5ud
 
 from root directory run sh init.sh to run the shell script
@@ -10,6 +11,3 @@ copy and paste the result into the command line
 use make update to set up the virtual environment
 
 to see the tree structure run tree . -I env
-
-[![Build status](badge)](link)
-[![Code coverage](badge)](link)
