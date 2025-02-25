@@ -1,4 +1,4 @@
-![workflow status](https://github.com/geotechnick/SP25_DS5111_dkr5ud/tree/main/.githhub/workflows/main.yml/badge.svg)
+![workflow status](https://github.com/geotechnick/SP25_DS5111_dkr5ud/tree/main/.github/workflows/main.yml/badge.svg)
 # SP25_DS5111_dkr5ud
 
 from root directory run sh init.sh to run the shell script
