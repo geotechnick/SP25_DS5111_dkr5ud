@@ -10,3 +10,6 @@ copy and paste the result into the command line
 use make update to set up the virtual environment
 
 to see the tree structure run tree . -I env
+
+[![Build status](badge)](link)
+[![Code coverage](badge)](link)
