@@ -1,7 +1,7 @@
 ![workflow status](https://github.com/geotechnick/SP25_DS5111_dkr5ud/actions/workflows/main.yml/badge.svg)
 # SP25_DS5111_dkr5ud
 
-from root directory run sh init.sh to run the shell script
+from root directory run sh init.sh to run the shell script (this makes sure you can run the makefile)
 
 navigate to the scripts folder using cd scripts
 
