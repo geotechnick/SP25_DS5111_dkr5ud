@@ -4,11 +4,13 @@ import sys
 import logging
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
+# nice, using logging!
 
 def normalize_csv(input_path):
     """Reads a raw stock CSV, extracts required fields, and saves a normalized version."""
     assert os.path.exists(input_path), f"File not found: {input_path}"
     assert input_path.endswith(".csv"), "Input file must be a CSV"
+    # good to see the asserts used to guard the inputs and output of the function
 
     # Load raw CSV
     df = pd.read_csv(input_path)
