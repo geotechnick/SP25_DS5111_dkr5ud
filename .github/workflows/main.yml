@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.10"]
+        python-version: ["3.10"] # let's add another version once we get the github workflow passing
 
     steps:
       - uses: actions/checkout@v4

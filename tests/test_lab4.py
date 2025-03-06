@@ -2,6 +2,8 @@ import sys
 sys.path.append('.')
 
 def test_<my module>():
+    # the naming of this test and the purpose is a bit obscure... 
+    # we're testing the normalize csv functionality, but we're not importing the normalizer...
     test_def normalize_csv(input_path):
     """Reads a raw stock CSV, extracts required fields, and saves a normalized version."""
     assert os.path.exists(input_path), f"File not found: {input_path}"
@@ -27,3 +29,5 @@ def test_<my module>():
     logging.info(f"Normalized CSV saved to {output_path}")
 
     assert len(sys.argv) == 2, "Usage: python bin/normalize_csv.py <path to raw gainers csv>"
+
+# not finding the tests for OS and python version...
