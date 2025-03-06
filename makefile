@@ -8,6 +8,9 @@ env:
 
 update: env
 	. env/bin/activate; pip install -r $(PROJECT_ROOT)/requirements.txt
+	# I think PROJECT_ROOT is not working, the github action is failing to find requirements.txt.
+	# I think it'd be safe to assume the makefile will be called from the root of your repo
+	# so you can probably just leave that out.
 
 lint:
 	pylint normalize_csv.py
