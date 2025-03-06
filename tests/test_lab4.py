@@ -29,3 +29,5 @@ def test_<my module>():
     logging.info(f"Normalized CSV saved to {output_path}")
 
     assert len(sys.argv) == 2, "Usage: python bin/normalize_csv.py <path to raw gainers csv>"
+
+# not finding the tests for OS and python version...
