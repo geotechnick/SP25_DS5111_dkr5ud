@@ -1,0 +1,9 @@
+# Run Yahoo gainers script at 9:31 AM, 12:30 PM, and 4:01 PM EST (Monday-Friday)
+31 9 * * 1-5 cd /home/ubuntu/.ssh/SP25_DS5111_dkr5ud && source venv/bin/activate && python bin/gainers/get_gainer.py yahoo
+30 12 * * 1-5 cd /home/ubuntu/.ssh/SP25_DS5111_dkr5ud && source venv/bin/activate && python bin/gainers/get_gainer.py yahoo
+1 16 * * 1-5 cd /home/ubuntu/.ssh/SP25_DS5111_dkr5ud && source venv/bin/activate && python bin/gainers/get_gainer.py yahoo
+
+# Run WSJ gainers script at the same times
+31 9 * * 1-5 cd /home/ubuntu/.ssh/SP25_DS5111_dkr5ud && source venv/bin/activate && python bin/gainers/get_gainer.py wsj
+30 12 * * 1-5 cd /home/ubuntu/.ssh/SP25_DS5111_dkr5ud && source venv/bin/activate && python bin/gainers/get_gainer.py wsj
+1 16 * * 1-5 cd /home/ubuntu/.ssh/SP25_DS5111_dkr5ud && source venv/bin/activate && python bin/gainers/get_gainer.py wsj
