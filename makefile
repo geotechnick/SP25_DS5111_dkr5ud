@@ -2,7 +2,7 @@ PROJECT_ROOT := $(shell pwd)
 
 # Default target
 default:
-	@cat Makefile
+	@cat makefile
 
 # Virtual environment setup
 env:
