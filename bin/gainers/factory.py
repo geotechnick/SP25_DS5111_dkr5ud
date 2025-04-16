@@ -1,5 +1,4 @@
 # factory.py - Factory pattern for object selection
-factory = """
 from .yahoo import GainerDownloadYahoo, GainerProcessYahoo
 from .wsj import GainerDownloadWSJ, GainerProcessWSJ
 
@@ -13,4 +12,3 @@ class GainerFactory:
     
     def get_processor(self):
         return GainerProcessYahoo() if self.choice == 'yahoo' else GainerProcessWSJ()
-"""
