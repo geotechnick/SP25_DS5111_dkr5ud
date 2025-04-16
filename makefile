@@ -14,7 +14,7 @@ update: env
 
 # Linting
 lint:
-	pylint bin/gainers/*.py factory.py
+	pylint bin/gainers/factory.py
 
 # Run tests
 test: env
