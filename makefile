@@ -17,8 +17,7 @@ lint:
 	pylint bin/gainers/factory.py
 
 # Run tests
-test: env
-	pylint bin/gainers/*.py get_gainer.py
+test:
 	pytest tests/
 
 # Fetch Yahoo gainers
