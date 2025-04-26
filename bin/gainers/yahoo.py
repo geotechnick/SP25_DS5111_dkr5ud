@@ -12,37 +12,58 @@ class GainerYahoo(GainerBase):
     def download(self):
         print("Downloading Yahoo gainers data...")
         # Example of downloading Yahoo finance data
-        tickers = ["AAPL", "MSFT", "NVDA"]
-        data = yf.download(tickers, period="1d", interval="1m", progress=False, group_by='ticker')
-        self.data = data  # Store the data for further processing
+        self.tickers = ["AAPL", "MSFT", "NVDA"]
+        self.data = yf.download(self.tickers, period="1d", interval="1m", progress=False, group_by='ticker')
 
     def normalize(self):
         print("Normalizing Yahoo gainers data...")
-        # Example normalization logic
-        self.normalized_data = self.data  # In a real case, normalization logic would go here
+        # In a real case, normalization logic would go here
+        self.normalized_data = self.data
 
     def save_with_timestamp(self):
         print("Saving Yahoo gainers data with timestamp...")
         timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         results = []
 
-        for symbol in self.data:
-            df = self.data[symbol]
-            latest = df.iloc[-1]
-            open_price = df.iloc[0]['Open']
-            last_price = latest['Close']
-            price_change = last_price - open_price
-            price_percent_change = (price_change / open_price) * 100
+        # Handle single vs multiple tickers
+        if isinstance(self.tickers, str):
+            tickers_list = [self.tickers]
+        else:
+            tickers_list = self.tickers
 
-            results.append({
-                'timestamp': timestamp,
-                'symbol': symbol,
-                'price': round(last_price, 2),
-                'price_change': round(price_change, 2),
-                'price_percent_change': round(price_percent_change, 2),
-            })
+        for symbol in tickers_list:
+            try:
+                if len(tickers_list) == 1:
+                    df = self.data  # Single ticker: no MultiIndex
+                else:
+                    df = self.data[symbol]
 
-        df = pd.DataFrame(results)
-        file_exists = os.path.isfile('gainers_output.csv')
-        df.to_csv('gainers_output.csv', mode='a', header=not file_exists, index=False)
-        print(f"Data saved to gainers_output.csv.")
+                if df.empty:
+                    print(f"No data for {symbol}, skipping...")
+                    continue
+
+                latest = df.iloc[-1]
+                open_price = df.iloc[0]['Open']
+                last_price = latest['Close']
+                price_change = last_price - open_price
+                price_percent_change = (price_change / open_price) * 100
+
+                results.append({
+                    'timestamp': timestamp,
+                    'symbol': symbol,
+                    'price': round(last_price, 2),
+                    'price_change': round(price_change, 2),
+                    'price_percent_change': round(price_percent_change, 2),
+                })
+
+            except Exception as e:
+                print(f"Error processing {symbol}: {e}")
+
+        if results:
+            df_results = pd.DataFrame(results)
+            file_exists = os.path.isfile('gainers_output.csv')
+            df_results.to_csv('gainers_output.csv', mode='a', header=not file_exists, index=False)
+            print("Data saved to gainers_output.csv.")
+        else:
+            print("No results to save.")
+
