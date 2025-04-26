@@ -1,4 +1,4 @@
-from factory import GainerFactory
+from bin.gainers.factory import GainerFactory
 import sys
 
 if __name__ == "__main__":
