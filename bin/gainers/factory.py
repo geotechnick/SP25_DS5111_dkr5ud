@@ -1,4 +1,5 @@
-from yahoo import GainerYahoo
+from bin.gainers.yahoo import GainerYahoo
+from bin.gainers.base import GainerBase
 
 # Factory class to return the correct downloader and processor
 class GainerFactory:
