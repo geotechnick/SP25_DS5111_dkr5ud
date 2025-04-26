@@ -1,4 +1,4 @@
-from base import GainerBase
+from bin.gainers.base import GainerBase
 import yfinance as yf
 import pandas as pd
 import os
