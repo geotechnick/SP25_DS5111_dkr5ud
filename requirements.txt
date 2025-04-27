@@ -2,3 +2,5 @@ pandas
 lxml
 pytest
 yfinance
+dbt-core
+dbt-snowflake
