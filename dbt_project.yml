@@ -1,0 +1,19 @@
+name: 'gainers'    # or any name you prefer
+version: '1.0'
+config-version: 2
+
+profile: 'default'   # <- Make sure this matches your profile name in ~/.dbt/profiles.yml
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+
+models:
+  gainers:      # this matches the `name:` field above
+    +materialized: table
+    example:     # this matches models/example/
+      +materialized: view    # you can override if you want models/example/* to be views
+
+seeds:
+  gainers:       # this matches the project name again
+    +schema: "{{ target.schema }}"  # use whatever schema you set in your profile.yml
+    +quote_columns: true            # helps avoid header issues with CSVs (e.g., names starting with numbers)
