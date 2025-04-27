@@ -1,19 +1,20 @@
-name: 'gainers'    # or any name you prefer
+name: 'sp25_ds5111_dkr5ud'
 version: '1.0'
 config-version: 2
 
-profile: 'default'   # <- Make sure this matches your profile name in ~/.dbt/profiles.yml
+profile: 'my-snowflake-db'  # <-- must match top key in profiles.yml
 
 model-paths: ["models"]
 seed-paths: ["seeds"]
+analysis-paths: ["analysis"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
 
 models:
-  gainers:      # this matches the `name:` field above
-    +materialized: table
-    example:     # this matches models/example/
-      +materialized: view    # you can override if you want models/example/* to be views
-
-seeds:
-  gainers:       # this matches the project name again
-    +schema: "{{ target.schema }}"  # use whatever schema you set in your profile.yml
-    +quote_columns: true            # helps avoid header issues with CSVs (e.g., names starting with numbers)
+  sp25_ds5111_dkr5ud:
+    +materialized: view
